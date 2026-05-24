@@ -5,10 +5,18 @@ info:
     url: 'https://github.com/digininja/DVWA/'
     email: robin@digi.ninja
   version: '0.1'
+security:
+  - ApiKeyAuth: []
 servers:
   -
     url: 'http://dvwa.test'
     description: 'API server'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
 paths:
   /vulnerabilities/api/v2/health/echo:
     post:
