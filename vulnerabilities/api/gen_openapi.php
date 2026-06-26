@@ -3,7 +3,8 @@ require("vendor/autoload.php");
 
 $openapi = \OpenApi\Generator::scan(['./src']);
 
-header("Access-Control-Allow-Origin: *");
+$allowedOrigins = ['https://example.com'];
+header("Access-Control-Allow-Origin: " . (in_array($_SERVER['HTTP_ORIGIN'] ?? '', $allowedOrigins) ? $_SERVER['HTTP_ORIGIN'] : ''));
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: OPTIONS,GET,POST,PUT,DELETE");
 header("Access-Control-Max-Age: 3600");
