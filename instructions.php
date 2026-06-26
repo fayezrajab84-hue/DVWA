@@ -23,7 +23,7 @@ if( !array_key_exists( $selectedDocId, $docs ) ) {
 }
 $readFile = $docs[ $selectedDocId ][ 'file' ];
 
-$instructions = file_get_contents( DVWA_WEB_PAGE_TO_ROOT.$readFile );
+$instructions = file_get_contents( DVWA_WEB_PAGE_TO_ROOT.basename($readFile) );
 
 if ($docs[ $selectedDocId ]['type'] == "markdown") {
 	$parsedown = new ParseDown();
